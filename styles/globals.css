@@ -19,6 +19,26 @@
    uppercase tracking-[2px] -bottom-4  absolute left-0 
    }
 
+
+   .btn-countreis{
+    @apply   text-[#bba14f]   text-center 
+     w-14 h-8 rounded-xl border-dotted text-[12px]
+    border-[2px] border-[#bba14f]  md:text-sm md:w-16
+    hover:text-white hover:border-white
+    hover:bg-[#bba14f]
+    
+    }
+    .city-text{
+    @apply text-white text-center w-auto px-5 py-5
+      border-2 border-[#bba14f] rounded-full  backdrop-brightness-50
+      tracking-widest
+    }
+    .week-btn{
+    @apply
+    w-[7rem] h-12  text-white border-2 border-dotted border-[#bba14f] rounded-2xl 
+    backdrop-brightness-50 hover:border-white hover:bg-[#bba14f]
+    
+    }
 }
 
 

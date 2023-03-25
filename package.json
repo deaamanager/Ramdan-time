@@ -17,9 +17,11 @@
     "add": "^2.0.6",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+    "framer-motion": "^10.8.5",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-social-icons": "^5.15.0",
     "three": "^0.150.1",
     "typescript": "5.0.2",
     "yarn": "^1.22.19"

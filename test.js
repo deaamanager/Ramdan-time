@@ -1,5 +1,0 @@
-{/**  // table for one month
-
- 
-
-*/}

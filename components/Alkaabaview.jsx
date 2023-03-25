@@ -8,8 +8,8 @@ export default function Alkaabaview(props) {
   const { nodes, materials } = useGLTF('/view.glb');
   const { viewport } = useThree();
   useFrame(() => (
-    group.current.scale.set(0.8,1.2,1.0),
-    group.current.position.set(26,-22,-52)
+    group.current.scale.set(1.2,1.2,1.2),
+    group.current.position.set(26,-25,-52)
     
   
     ))
