@@ -24,6 +24,7 @@
     "react-social-icons": "^5.15.0",
     "three": "^0.150.1",
     "typescript": "5.0.2",
+    "vercel": "^28.18.1",
     "yarn": "^1.22.19"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GetStaticProps } from "next";
+import { GetStaticProps,GetServerSideProps } from "next";
 import Dragdrop from "@/components/Dragdrop"
 import { motion, AnimatePresence } from "framer-motion";
 import Head from 'next/head';
@@ -15,6 +15,7 @@ type PrayerTime = {
   asr: string;
   maghrib: string;
   isha: string;
+  
 }
 
 
@@ -24,7 +25,7 @@ type Props = {
   data2: PrayerTime[],
   data3: PrayerTime[],
   data4: PrayerTime[],
-  handelClose: any,
+  
 }
 
 
@@ -35,7 +36,7 @@ async function fetchPrayerTime(url: string): Promise<PrayerTime[]> {
     const data = await response.json();
     return data.items as PrayerTime[];
   } catch (error) {
-    console.error(`An error occurred while fetching ${url}`, error);
+    
     return [];
   }
 }
@@ -322,7 +323,7 @@ function Fourthweek({ handelClose,data4 }: Props) {
 
 
 
- function Egypt({data1,data2,data3,data4}: Props) {
+ function Egypt({...Props}:Props) {
   const [Firstweek, setFirstweek] = useState<boolean>(false);
   const [Thrweek, setThrweek] = useState<boolean>(false);
   const [Scdweek, setScdweek] = useState<boolean>(false);
@@ -353,7 +354,7 @@ function Fourthweek({ handelClose,data4 }: Props) {
           initial={false}
           onExitComplete={close}
         >
-          {Firstweek && <Firstwek data1={data1}  Firstweek={Firstweek}  handelClose={close}  />}
+          {Firstweek && <Firstwek {...Props}  handelClose={close}  />}
           
         </AnimatePresence>
         
@@ -365,7 +366,7 @@ function Fourthweek({ handelClose,data4 }: Props) {
           initial={false}
           onExitComplete={close}
         >
-          {Scdweek && <Secondweek data2={data2}  Scdweek={Scdweek}  handelClose={close}   />}
+          {Scdweek && <Secondweek {...Props}   handelClose={close}   />}
           
         </AnimatePresence>
 
@@ -378,7 +379,7 @@ function Fourthweek({ handelClose,data4 }: Props) {
           initial={false}
           onExitComplete={close}
         >
-          { Thrweek && <Thirdweek data3={data3}  Thrweek={Thrweek}  handelClose={close}  />}
+          { Thrweek && <Thirdweek {...Props}    handelClose={close}  />}
           
         </AnimatePresence>
 
@@ -392,7 +393,7 @@ function Fourthweek({ handelClose,data4 }: Props) {
           initial={false}
           onExitComplete={close}
         >
-          { Fortweek && <Fourthweek data4={data4}  Fortweek={Fortweek}  handelClose={close}  />}
+          { Fortweek && <Fourthweek {...Props}   handelClose={close}  />}
           
         </AnimatePresence>   
       </div>
@@ -402,7 +403,7 @@ function Fourthweek({ handelClose,data4 }: Props) {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const prayerDataPromises = [
     fetchPrayerTime("http://muslimsalat.com/cairo/weekly/23-03-2023/true.json?key=705ad57b02ad96ff58f3ca25bc911a6b"),
     fetchPrayerTime("https://muslimsalat.com/cairo/weekly/30-03-2023/true.json?key=705ad57b02ad96ff58f3ca25bc911a6b"),
@@ -417,8 +418,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       data2,
       data3,
       data4,
-    },
+      
+    }
+    
   };
+  
 };
 
 

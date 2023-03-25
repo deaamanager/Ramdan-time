@@ -307,7 +307,7 @@ function Fourthweek({ handelClose, data4 }: Props) {
 
 
 
-function Sudi({ data1, data2, data3, data4 }: Props) {
+function Sudi({ ...Props }: Props) {
   const [Firstweek, setFirstweek] = useState<boolean>(false);
   const [Thrweek, setThrweek] = useState<boolean>(false);
   const [Scdweek, setScdweek] = useState<boolean>(false);
@@ -339,7 +339,7 @@ function Sudi({ data1, data2, data3, data4 }: Props) {
           initial={false}
           onExitComplete={close}
         >
-          {Firstweek && <Firstwek data1={data1} Firstweek={Firstweek} handelClose={close} />}
+          {Firstweek && <Firstwek {...Props}  handelClose={close} />}
 
         </AnimatePresence>
 
@@ -351,7 +351,7 @@ function Sudi({ data1, data2, data3, data4 }: Props) {
           initial={false}
           onExitComplete={close}
         >
-          {Scdweek && <Secondweek data2={data2} Scdweek={Scdweek} handelClose={close} />}
+          {Scdweek && <Secondweek {...Props}  handelClose={close} />}
 
         </AnimatePresence>
 
@@ -364,7 +364,7 @@ function Sudi({ data1, data2, data3, data4 }: Props) {
           initial={false}
           onExitComplete={close}
         >
-          {Thrweek && <Thirdweek data3={data3} Thrweek={Thrweek} handelClose={close} />}
+          {Thrweek && <Thirdweek {...Props}  handelClose={close} />}
 
         </AnimatePresence>
 
@@ -378,7 +378,7 @@ function Sudi({ data1, data2, data3, data4 }: Props) {
           initial={false}
           onExitComplete={close}
         >
-          {Fortweek && <Fourthweek data4={data4} Fortweek={Fortweek} handelClose={close} />}
+          {Fortweek && <Fourthweek {...Props}  handelClose={close} />}
 
         </AnimatePresence>
       </div>
@@ -403,6 +403,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       data2,
       data3,
       data4,
+      
     },
   };
 };
