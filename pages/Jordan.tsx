@@ -31,6 +31,7 @@ async function fetchPrayerTime(url: string): Promise<PrayerTime[]> {
     const response = await fetch(url);
     const data = await response.json();
     return data.items as PrayerTime[];
+    // log the data
   } catch (error) {
     
     return [];
