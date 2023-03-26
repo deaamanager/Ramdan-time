@@ -43,9 +43,21 @@ async function fetchPrayerTime(url: string): Promise<PrayerTime[]> {
 
 
 
+ function Egypt({...Props}:Props) {
+  const [Firstweek, setFirstweek] = useState<boolean>(false);
+  const [Thrweek, setThrweek] = useState<boolean>(false);
+  const [Scdweek, setScdweek] = useState<boolean>(false);
+  const [Fortweek, setFortweek] = useState<boolean>(false);
+  
+  
+  const close = () => (setFirstweek(false),setThrweek(false),setScdweek(false),setFortweek (false));
+   const handelClose = () => {
+    close();
+  };
 
-// the first week 
-function Firstwek ({ handelClose,data1 }: Props) {
+
+  // the first week 
+function Firstwek ({ data1 }: Props) {
   const dropIn = {
     hidden: {
       y: "-100vh",
@@ -112,7 +124,7 @@ function Firstwek ({ handelClose,data1 }: Props) {
 
 
 // the second week 
-function Secondweek({ handelClose,data2 }: Props) {
+function Secondweek({ data2 }: Props) {
   const dropIn = {
     hidden: {
       y: "-100vh",
@@ -179,7 +191,7 @@ function Secondweek({ handelClose,data2 }: Props) {
 
 
 // the third week
-function Thirdweek({ handelClose,data3 }: Props) {
+function Thirdweek({ data3 }: Props) {
   const dropIn = {
     hidden: {
       y: "-100vh",
@@ -247,7 +259,7 @@ function Thirdweek({ handelClose,data3 }: Props) {
 
 
 // the fourth week
-function Fourthweek({ handelClose,data4 }: Props) {
+function Fourthweek({ data4 }: Props) {
   const dropIn = {
     hidden: {
       y: "-100vh",
@@ -323,14 +335,9 @@ function Fourthweek({ handelClose,data4 }: Props) {
 
 
 
- function Egypt({...Props}:Props) {
-  const [Firstweek, setFirstweek] = useState<boolean>(false);
-  const [Thrweek, setThrweek] = useState<boolean>(false);
-  const [Scdweek, setScdweek] = useState<boolean>(false);
-  const [Fortweek, setFortweek] = useState<boolean>(false);
-  
-  
-  const close = () => (setFirstweek(false),setThrweek(false),setScdweek(false),setFortweek (false));
+
+
+
   return (
     <div className=' relative -top-[45rem] text-black  flex flex-col justify-center items-center space-y-20 '>
 
@@ -354,7 +361,7 @@ function Fourthweek({ handelClose,data4 }: Props) {
           initial={false}
           onExitComplete={close}
         >
-          {Firstweek && <Firstwek {...Props}  handelClose={close}  />}
+          {Firstweek && <Firstwek {...Props}  />}
           
         </AnimatePresence>
         
@@ -366,7 +373,7 @@ function Fourthweek({ handelClose,data4 }: Props) {
           initial={false}
           onExitComplete={close}
         >
-          {Scdweek && <Secondweek {...Props}   handelClose={close}   />}
+          {Scdweek && <Secondweek {...Props}     />}
           
         </AnimatePresence>
 
@@ -379,7 +386,7 @@ function Fourthweek({ handelClose,data4 }: Props) {
           initial={false}
           onExitComplete={close}
         >
-          { Thrweek && <Thirdweek {...Props}    handelClose={close}  />}
+          { Thrweek && <Thirdweek {...Props}     />}
           
         </AnimatePresence>
 
@@ -393,7 +400,7 @@ function Fourthweek({ handelClose,data4 }: Props) {
           initial={false}
           onExitComplete={close}
         >
-          { Fortweek && <Fourthweek {...Props}   handelClose={close}  />}
+          { Fortweek && <Fourthweek {...Props}    />}
           
         </AnimatePresence>   
       </div>
@@ -403,7 +410,7 @@ function Fourthweek({ handelClose,data4 }: Props) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const prayerDataPromises = [
     fetchPrayerTime("http://muslimsalat.com/cairo/weekly/23-03-2023/true.json?key=705ad57b02ad96ff58f3ca25bc911a6b"),
     fetchPrayerTime("https://muslimsalat.com/cairo/weekly/30-03-2023/true.json?key=705ad57b02ad96ff58f3ca25bc911a6b"),

@@ -22,7 +22,7 @@ type Props = {
   data2: PrayerTime[],
   data3: PrayerTime[],
   data4: PrayerTime[],
-  handelClose: any,
+
 }
 
 async function fetchPrayerTime(url: string): Promise<PrayerTime[]> {
@@ -36,8 +36,25 @@ async function fetchPrayerTime(url: string): Promise<PrayerTime[]> {
   }
 }
 
-// the first week 
-function Firstwek({ handelClose, data1 }: Props) {
+
+
+
+function Turkey({ ...Props}: Props) {
+  const [Firstweek, setFirstweek] = useState<boolean>(false);
+  const [Thrweek, setThrweek] = useState<boolean>(false);
+  const [Scdweek, setScdweek] = useState<boolean>(false);
+  const [Fortweek, setFortweek] = useState<boolean>(false);
+
+
+  const close = () => (setFirstweek(false), setThrweek(false), setScdweek(false), setFortweek(false));
+
+  const handelClose = () => {
+    close();
+  };
+
+
+ // the first week 
+function Firstwek({  data1 }: Props) {
   const dropIn = {
     hidden: {
       y: "-100vh",
@@ -104,7 +121,7 @@ function Firstwek({ handelClose, data1 }: Props) {
 
 
 // the second week 
-function Secondweek({ handelClose, data2 }: Props) {
+function Secondweek({  data2 }: Props) {
   const dropIn = {
     hidden: {
       y: "-100vh",
@@ -171,7 +188,7 @@ function Secondweek({ handelClose, data2 }: Props) {
 
 
 // the third week
-function Thirdweek({ handelClose, data3 }: Props) {
+function Thirdweek({  data3 }: Props) {
   const dropIn = {
     hidden: {
       y: "-100vh",
@@ -239,7 +256,7 @@ function Thirdweek({ handelClose, data3 }: Props) {
 
 
 // the fourth week
-function Fourthweek({ handelClose, data4 }: Props) {
+function Fourthweek({  data4 }: Props) {
   const dropIn = {
     hidden: {
       y: "-100vh",
@@ -304,15 +321,6 @@ function Fourthweek({ handelClose, data4 }: Props) {
   )
 };
 
-
-function Turkey({ ...Props}: Props) {
-  const [Firstweek, setFirstweek] = useState<boolean>(false);
-  const [Thrweek, setThrweek] = useState<boolean>(false);
-  const [Scdweek, setScdweek] = useState<boolean>(false);
-  const [Fortweek, setFortweek] = useState<boolean>(false);
-
-
-  const close = () => (setFirstweek(false), setThrweek(false), setScdweek(false), setFortweek(false));
   return (
     <div className=' relative -top-[45rem] text-black  flex flex-col justify-center items-center space-y-20 '>
 
@@ -337,7 +345,7 @@ function Turkey({ ...Props}: Props) {
           initial={false}
           onExitComplete={close}
         >
-          {Firstweek && <Firstwek {...Props} handelClose={close} />}
+          {Firstweek && <Firstwek {...Props} />}
 
         </AnimatePresence>
 
@@ -349,7 +357,7 @@ function Turkey({ ...Props}: Props) {
           initial={false}
           onExitComplete={close}
         >
-          {Scdweek && <Secondweek {...Props}  handelClose={close} />}
+          {Scdweek && <Secondweek {...Props}  />}
 
         </AnimatePresence>
 
@@ -362,7 +370,7 @@ function Turkey({ ...Props}: Props) {
           initial={false}
           onExitComplete={close}
         >
-          {Thrweek && <Thirdweek {...Props} handelClose={close} />}
+          {Thrweek && <Thirdweek {...Props} />}
 
         </AnimatePresence>
 
@@ -376,7 +384,7 @@ function Turkey({ ...Props}: Props) {
           initial={false}
           onExitComplete={close}
         >
-          {Fortweek && <Fourthweek {...Props}  handelClose={close} />}
+          {Fortweek && <Fourthweek {...Props}  />}
 
         </AnimatePresence>
       </div>

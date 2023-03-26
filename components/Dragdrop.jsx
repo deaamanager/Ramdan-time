@@ -8,7 +8,7 @@ function Dragdrop({children,onClick}) {
     animate={{ opacity:1 }}
     exit={{ opacity:0 }}
     onClick={onClick}
-    className=""
+    className="z-[100] "
     >
         {children}
     </motion.div>
