@@ -1,46 +1,43 @@
-
 @layer utilities {
-
-.anmitetion{ animation: animate 3s linear infinite; }
-        @keyframes animate{
-           
-            100%{ transform: rotate(-360deg); }
-        }
+  .anmitetion {
+    animation: animate 3s linear infinite;
+  }
+  @keyframes animate {
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
   .boxfooter::before {
     @apply content-['']  bg-[conic-gradient(#bba14f_60deg,transparent_120deg)] 
    rounded-t-3xl w-full h-[55rem] absolute  -bottom-[5rem]  right-[0%]
-   anmitetion
-   }
+   anmitetion;
+  }
 
-  .boxfooter::after{
-   @apply content-[''] text-white w-[100%] h-[5.5rem] 
+  .boxfooter::after {
+    @apply content-[''] text-white w-[100%] h-[5.5rem] 
    bg-black  rounded-t-3xl
    flex flex-col justify-center items-center
-   uppercase tracking-[2px] -bottom-4  absolute left-0 
-   }
+   uppercase tracking-[2px] -bottom-4  absolute left-0;
+  }
 
-
-   .btn-countreis{
-    @apply   text-[#bba14f]   text-center 
+  .btn-countreis {
+    @apply text-[#bba14f]   text-center 
+    bg-[#111]/40
      w-14 h-8 rounded-xl border-dotted text-[12px]
     border-[2px] border-[#bba14f]  md:text-sm md:w-16
-    hover:text-white hover:border-white
-    hover:bg-[#bba14f]
-    
-    }
-    .city-text{
-    @apply text-white text-center w-auto px-5 py-5
+    hover:text-[#111] hover:border-[#111]
+    hover:bg-[#bba14f];
+  }
+  .city-text {
+    @apply text-white flex items-center justify-center text-center w-auto px-5 py-2
       border-2 border-[#bba14f] rounded-full  backdrop-brightness-50
-      tracking-widest
-    }
-    .week-btn{
-    @apply
-    w-[7rem] h-12  text-white border-2 border-dotted border-[#bba14f] rounded-2xl 
-    backdrop-brightness-50 hover:border-white hover:bg-[#bba14f]
-    
-    }
+      tracking-widest;
+  }
+  .week-btn {
+    @apply w-[7rem] h-12  text-white border-2 border-dotted border-[#bba14f] rounded-2xl 
+    backdrop-brightness-50 hover:border-white hover:bg-[#bba14f];
+  }
 }
-
 
 @tailwind base;
 @tailwind components;

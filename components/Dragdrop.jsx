@@ -1,19 +1,18 @@
-import React from 'react';
+import React from "react";
 import { motion } from "framer-motion";
 
-function Dragdrop({children,onClick}) {
+function Dragdrop({ children, onClick }) {
   return (
     <motion.div
-    initial={{ opacity:0 }}
-    animate={{ opacity:1 }}
-    exit={{ opacity:0 }}
-    onClick={onClick}
-    className="z-[100] "
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClick}
+      className="z-50 relative "
     >
-        {children}
+      {children}
     </motion.div>
-
-  )
+  );
 }
 
-export default Dragdrop
+export default Dragdrop;
